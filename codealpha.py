@@ -48,4 +48,31 @@ if stock in stock_prices:
 
 else:
     print("Stock not available.")
-    
+    stock_prices = {
+    "AAPL": 180,
+    "TSLA": 250,
+    "GOOGL": 140,
+    "MSFT": 320,
+    "AMZN": 145
+}
+
+total_investment = 0
+
+while True:
+
+    stock = input("Enter Stock Name (or EXIT): ").upper()
+
+    if stock == "EXIT":
+        break
+
+    if stock not in stock_prices:
+        print("Stock not found.")
+        continue
+
+    quantity = int(input("Enter Quantity: "))
+
+    investment = stock_prices[stock] * quantity
+
+    total_investment += investment
+
+print("Total Investment Value: $", total_investment)
