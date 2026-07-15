@@ -27,3 +27,25 @@ if stock in stock_prices:
     print("Quantity:", quantity)
 else:
     print("Stock not available.")
+    stock_prices = {
+    "AAPL": 180,
+    "TSLA": 250,
+    "GOOGL": 140,
+    "MSFT": 320,
+    "AMZN": 145
+}
+
+stock = input("Enter Stock Name: ").upper()
+quantity = int(input("Enter Quantity: "))
+
+if stock in stock_prices:
+    total = stock_prices[stock] * quantity
+
+    print("Stock:", stock)
+    print("Price:", stock_prices[stock])
+    print("Quantity:", quantity)
+    print("Total Investment: $", total)
+
+else:
+    print("Stock not available.")
+    
