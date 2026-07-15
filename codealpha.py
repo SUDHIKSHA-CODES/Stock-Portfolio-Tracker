@@ -113,3 +113,54 @@ file.close()
 
 print("Portfolio saved successfully.")
 print("Total Investment: $", total_investment)
+stock_prices = {
+    "AAPL": 180,
+    "TSLA": 250,
+    "GOOGL": 140,
+    "MSFT": 320,
+    "AMZN": 145
+}
+
+total_investment = 0
+
+print("========== STOCK PORTFOLIO TRACKER ==========")
+print("Available Stocks:")
+
+for stock, price in stock_prices.items():
+    print(f"{stock} : ${price}")
+
+file = open("portfolio.txt", "w")
+
+while True:
+
+    stock = input("\nEnter Stock Name (or EXIT): ").upper()
+
+    if stock == "EXIT":
+        break
+
+    if stock not in stock_prices:
+        print("Invalid stock name.")
+        continue
+
+    try:
+        quantity = int(input("Enter Quantity: "))
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
+
+    investment = stock_prices[stock] * quantity
+
+    total_investment += investment
+
+    print(f"Investment in {stock}: ${investment}")
+
+    file.write(f"{stock} | Quantity: {quantity} | Investment: ${investment}\n")
+
+file.write(f"\nTotal Investment Value: ${total_investment}")
+
+file.close()
+
+print("\n===================================")
+print("Total Investment Value: $", total_investment)
+print("Portfolio saved in portfolio.txt")
+print("===================================")
